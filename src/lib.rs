@@ -29,3 +29,15 @@ pub fn get_nth_prime(n: usize) -> usize {
 
     primes[n]
 }
+
+#[test]
+fn should_get_primes() {
+    let primes = get_primes(10);
+    assert_eq!(primes, [2, 3, 5, 7])
+}
+
+#[test]
+fn should_get_nth_prime() {
+    let primes = [get_nth_prime(10), get_nth_prime(100), get_nth_prime(1000)];
+    assert_eq!(primes, [29, 547, 7921]);
+}
