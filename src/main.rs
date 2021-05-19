@@ -11,7 +11,7 @@ fn main() {
         let input = input.trim();
 
         if input == "exit" {
-            break
+            break;
         }
 
         let n = input.parse().expect("problem parsing usize");

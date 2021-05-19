@@ -3,7 +3,7 @@ pub fn get_primes(n: usize) -> Vec<usize> {
     primes[1] = false;
 
     let sqrt_n = (n as f64).sqrt() as usize;
-    for i in 3..sqrt_n {
+    for i in 2..sqrt_n + 1 {
         if primes[i] {
             let mut j = i * i;
             while j <= n {
@@ -12,9 +12,14 @@ pub fn get_primes(n: usize) -> Vec<usize> {
             }
         }
     }
-    primes.iter().enumerate().filter(|a| a.1 == &true).map(|a| a.0).collect::<Vec<_>>()
-}
 
+    primes
+        .iter()
+        .enumerate()
+        .filter(|a| *a.1)
+        .map(|a| a.0)
+        .collect::<Vec<_>>()
+}
 
 pub fn get_nth_prime(n: usize) -> usize {
     let mut size_factor = 3;
@@ -27,7 +32,7 @@ pub fn get_nth_prime(n: usize) -> usize {
         s = n * size_factor;
     }
 
-    primes[n]
+    primes[n - 1]
 }
 
 #[test]
@@ -39,5 +44,5 @@ fn should_get_primes() {
 #[test]
 fn should_get_nth_prime() {
     let primes = [get_nth_prime(10), get_nth_prime(100), get_nth_prime(1000)];
-    assert_eq!(primes, [29, 547, 7921]);
+    assert_eq!(primes, [29, 541, 7919]);
 }
