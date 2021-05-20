@@ -3,7 +3,7 @@ pub fn get_primes(n: usize) -> Vec<usize> {
     primes[1] = false;
 
     let sqrt_n = (n as f64).sqrt() as usize;
-    for i in 2..sqrt_n + 1 {
+    for i in 3..sqrt_n + 1 {
         if primes[i] {
             let mut j = i * i;
             while j <= n {
